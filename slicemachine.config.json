@@ -1,0 +1,6 @@
+{
+  "libraries": ["./app/slices"],
+  "repositoryName": "glide-ai-website-project",
+  "adapter": "@slicemachine/adapter-nuxt",
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+}
