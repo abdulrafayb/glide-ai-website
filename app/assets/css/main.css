@@ -1,3 +1,9 @@
+html {
+  color-scheme: dark;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
+  background-image: url("/assets/noise-texture.svg");
+  @apply bg-gray-950 bg-repeat text-gray-50;
 }
