@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import gsap from "gsap";
 import type { Content } from "@prismicio/client";
 
 // The array passed to `getSliceComponentProps` is purely optional.
@@ -29,14 +30,23 @@ defineProps(
         wrapper="p"
         class="mx-auto mt-6 max-w-md text-balance text-gray-300"
       />
-      <div>
+      <div class="flex flex-wrap gap-8 justify-center mt-8">
         <PrismicLink
-          v-for="link in slice.primary.ctas"
-          :key="link.key"
-          :field="link"
+          v-for="cta in slice.primary.ctas"
+          :key="cta.key"
+          :field="cta"
+          class="buttonLink"
         />
       </div>
-      <PrismicImage :field="slice.primary.image" />
+      <div class="glassContainer mt-16 w-fit">
+        <div
+          class="absolute left-1/3 top-0 -z-10 h-2/3 w-2/3 bg-sky-700/50 blur-3xl md:blur-[120px] filter mix-blend-screen"
+        />
+        <div
+          class="absolute left-0 top-1/3 -z-10 h-2/3 w-2/3 bg-teal-600/50 blur-3xl md:blur-[120px] filter mix-blend-screen"
+        />
+        <PrismicImage :field="slice.primary.image" />
+      </div>
     </div>
   </Bounded>
 </template>
