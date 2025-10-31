@@ -1,5 +1,73 @@
 <script lang="ts" setup>
+import gsap from 'gsap';
+
 const grid = [14, 30];
+
+onMounted(() => {
+  const preferReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  if (preferReducedMotion) return;
+
+  gsap.set('.glide-grid-item', {
+    opacity: 0,
+    transformOrigin: 'center',
+    color: '#ffffff',
+  });
+  gsap.set('#glideGrid', { opacity: 1 });
+
+  const tl = gsap.timeline();
+
+  // entrance
+  tl.to('.glide-grid-item', {
+    keyframes: [
+      { opacity: 0, duration: 0 },
+      {
+        opacity: 0.4,
+        rotation: '+=180',
+        color: '#0284c7',
+        scale: 3,
+        duration: 0.6,
+        stagger: { amount: 2, grid, from: 'center' },
+      },
+      {
+        opacity: 0.2,
+        rotation: '+=180',
+        color: '#ffffff',
+        scale: 1,
+        duration: 0.6,
+        stagger: { amount: 3, grid, from: 'center' },
+      },
+    ],
+  });
+
+  // loop
+  tl.to('.glide-grid-item', {
+    delay: 12,
+    repeat: -1,
+    repeatDelay: 12,
+    keyframes: [
+      { opacity: 0, duration: 0 },
+      {
+        opacity: 0.4,
+        rotation: '+=180',
+        color: '#0284c7',
+        scale: 3,
+        duration: 0.6,
+        stagger: { amount: 2, grid, from: 'center' },
+      },
+      {
+        opacity: 0.2,
+        rotation: '+=180',
+        color: '#ffffff',
+        scale: 1,
+        duration: 0.6,
+        stagger: { amount: 3, grid, from: 'center' },
+      },
+    ],
+  });
+});
 </script>
 
 <template>
