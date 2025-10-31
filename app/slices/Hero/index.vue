@@ -37,7 +37,7 @@ onMounted(() => {
     '-=0.6'
   );
   tl.fromTo(
-    '.hero_ctas',
+    '.hero_cta',
     { scale: 1.5, opacity: 0 },
     { scale: 1, opacity: 1, duration: 1.3 },
     '-=0.8'
@@ -92,19 +92,19 @@ onMounted(() => {
       <PrismicText
         :field="slice.primary.heading"
         wrapper="h1"
-        class="hero_heading mx-auto max-w-3xl text-balance text-5xl font-medium"
+        class="hero_heading mx-auto max-w-3xl text-balance text-5xl md:text-7xl font-medium"
       />
       <PrismicText
         :field="slice.primary.body"
         wrapper="p"
         class="hero_body mx-auto mt-6 max-w-md text-balance text-gray-300"
       />
-      <div class="hero_ctas flex flex-wrap gap-8 justify-center mt-8">
+      <div class="flex flex-wrap gap-8 justify-center mt-8">
         <PrismicLink
           v-for="cta in slice.primary.ctas"
           :key="cta.key"
           :field="cta"
-          class="buttonLink"
+          class="hero_cta buttonLink"
         />
       </div>
       <div class="hero_image glassContainer mt-16 w-fit">
