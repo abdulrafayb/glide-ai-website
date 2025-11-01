@@ -1,5 +1,7 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
+import tailwindTypography from '@tailwindcss/typography';
 
 export default <Partial<Config>>{
-  content: ["./app/**/*.{js,ts,vue}"],
+  content: ['./app/**/*.{js,ts,vue}'],
+  plugin: [tailwindTypography],
 };
