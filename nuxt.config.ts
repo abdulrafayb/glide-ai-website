@@ -1,4 +1,4 @@
-import { repositoryName, apiEndpoint } from "./slicemachine.config.json";
+import { repositoryName, apiEndpoint } from './slicemachine.config.json';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -6,40 +6,44 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Prismic + Nuxt Minimal Starter",
-      htmlAttrs: { lang: "en" },
-      meta: [{ charset: "utf-8" }],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      title: 'Prismic + Nuxt Minimal Starter',
+      htmlAttrs: { lang: 'en' },
+      meta: [{ charset: 'utf-8' }],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
   },
 
-  css: ["~/assets/css/main.css"],
+  css: ['~/assets/css/main.css'],
 
   modules: [
-    "@nuxt/eslint",
-    "@nuxtjs/prismic",
-    "@nuxtjs/tailwindcss",
-    "@nuxt/fonts",
-    "@nuxt/icon",
+    '@nuxt/eslint',
+    '@nuxtjs/prismic',
+    '@nuxtjs/tailwindcss',
+    '@nuxt/fonts',
+    '@nuxt/icon',
   ],
 
   prismic: {
     endpoint: apiEndpoint || repositoryName,
-    preview: "/api/preview",
+    preview: '/api/preview',
     clientConfig: {
       routes: [
         {
-          type: "page",
-          path: "/:uid",
+          type: 'page',
+          path: '/:uid',
         },
         {
-          type: "page",
-          uid: "home",
-          path: "/",
+          type: 'page',
+          uid: 'home',
+          path: '/',
+        },
+        {
+          type: 'case_study',
+          path: '/case_study/:uid',
         },
       ],
     },
   },
 
-  compatibilityDate: "2025-07-16",
+  compatibilityDate: '2025-07-16',
 });
