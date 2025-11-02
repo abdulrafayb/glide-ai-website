@@ -16,7 +16,7 @@ const props = defineProps(
 
 const integrations = computed(() => {
   return props.slice.primary.integrations
-    .map((item) => item.icon_id)
+    .map((integration) => integration.icon_id)
     .filter((icon) => prismic.isFilled.keyText(icon));
 });
 
@@ -36,16 +36,20 @@ onMounted(() => {
     ],
   });
 
-  tl.to('.signalLine', {
-    keyframes: [
-      { backgroundPosition: '0% 0%' },
-      {
-        backgroundPosition: '100% 100%',
-        duration: 1,
-        stagger: { from: 'center', each: 0.3 },
-      },
-    ],
-  });
+  tl.to(
+    '.signalLine',
+    {
+      keyframes: [
+        { backgroundPosition: '0% 0%' },
+        {
+          backgroundPosition: '100% 100%',
+          duration: 1,
+          stagger: { from: 'center', each: 0.3 },
+        },
+      ],
+    },
+    '-=1.4'
+  );
 
   tl.to(
     '.pulsingIcon',
@@ -80,6 +84,7 @@ onMounted(() => {
     <GlideLogoFrame
       class="absolute left-1/2 top-1/2 translate-x-[20%] -translate-y-2/3 scale-150 opacity-60"
     />
+
     <div class="relative">
       <PrismicText
         :field="slice.primary.heading"
@@ -96,14 +101,14 @@ onMounted(() => {
           v-for="(integration, index) in integrations"
           :key="integration"
         >
-          <template v-if="index === Math.floor(integration.length / 2)">
+          <template v-if="index === Math.floor(integrations.length / 2)">
             <GlideLogoStylized
               class="pulsingLogo shrink-0 opacity-70 brightness-100 -mt-[42px] -mb-[11px] md:mb-4 md:mt-0 md:-mr-10 md:-ml-7"
             />
             <div class="signalLine rotate-180" />
           </template>
           <div
-            class="pulsingIcon flex aspect-square shrink-0 items-center justify-center rounded-full border"
+            class="pulsingIcon flex aspect-square shrink-0 items-center justify-center rounded-full border border-sky-50/30 bg-sky-50/25 p-4 text-3xl text-sky-100 opacity-40 md:text-3xl lg:text-5xl"
           >
             <Icon :name="integration" />
           </div>
