@@ -125,7 +125,7 @@ onMounted(() => {
 <style scoped>
 .signalLine {
   --rotation: 90deg;
-  @apply h-[20px] w-[1.5px] bg-gradient-to-t md: h-[1.5px] md: w-[30px] lg: w-[40px] xl: w-[50px];
+  @apply h-[20px] w-[1.5px] bg-gradient-to-t md:h-[1.5px] md:w-[30px] lg:w-[40px] xl:w-[50px];
 
   background-color: hsla(0%, 0%, 100%, 0.1);
   background-image: linear-gradient(
